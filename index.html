@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .box {
+        height: 250px;
+        width: 300px;
+        background-color: red;
+        border: 10px double white;
+        border-radius: 10px;
+        margin: 100px auto;
+        padding: 10px;
+        box-shadow: 0px 0px 5px 15px white;
+      }
+      #result {
+        font-size: 40px;
+        font-weight: 500;
+        border: 5px double blueviolet;
+        padding: 10px;
+        box-shadow: 0px 0px 10px 10px black inset;
+        text-align: center;
+      }
+      button{
+        height: 50px;
+        width: 150px;
+        font-size: 1.5rem;
+        padding: 5px;
+        border: 5px double blueviolet;
+        border-radius: 10px;
+        margin-left: 70px;
+        margin-top: 30px;
+        cursor: pointer;
+      }
+    
+    </style>
+  </head>
+  <body onload="randomColor()">
+    <div class="box">
+      <p id="result">#1b23bd</p>
+      <button onclick="setColor()">SetColor</button>
+    </div>
+    <script>
+      // hexcode=abcdef 6 length    no.0123456789 length 10
+
+      var randomColor = () => {
+        var randomHex = "0a1c23b4d56e78f9"; //0123456789abcdef  color
+        var borderRandomHex = "0a1c23b4d56e78f9";  //border
+        
+        // alert("random index: " + hexIndex);
+        // alert("random char:" + randomHex[hexIndex]);
+        var color="#"
+        var colorB="#"  //border
+        // alert(color+randomHex[hexIndex])
+
+        for(i=0;i<=5;i++){
+            var hexIndex = Math.floor(Math.random() * 16);
+            var borderHexIndex = Math.floor(Math.random() * 16);
+            color=color+randomHex[hexIndex];
+            colorB=colorB+borderRandomHex[borderHexIndex];
+            
+        }
+        var result=document.getElementById('result');
+        result.style.background=color;
+        document.querySelector('body').style.background=color
+        result.innerText=color
+        result.style.border="8px groove"+colorB
+      };
+      const setColor=()=>{
+        var color=document.querySelector('p').innerText;
+        document.querySelector('.box').style.background=color
+        console.log(color)
+      }
+      setInterval(randomColor,1000)
+    //   generateColor();
+    </script>
+  </body>
+</html>
